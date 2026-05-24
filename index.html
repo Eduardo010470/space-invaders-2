@@ -125,7 +125,7 @@ function lbHTML(){
 
 // ── OVERLAY ──
 const OV=document.getElementById('overlay');
-function showOV(html){OV.style.display='flex';OV.innerHTML=html;OV.style.zIndex='9999';OV.style.position='fixed';}
+function showOV(html){OV.style.display='flex';OV.innerHTML=html;}
 function hideOV(){OV.style.display='none';}
 
 function renderStart(){
@@ -157,7 +157,7 @@ function lbHTML(){
 
 // ── OVERLAY ──
 const OV=document.getElementById('overlay');
-function showOV(html){OV.style.display='flex';OV.innerHTML=html;OV.style.zIndex='9999';OV.style.position='fixed';}
+function showOV(html){OV.style.display='flex';OV.innerHTML=html;}
 function hideOV(){OV.style.display='none';}
 
 function renderStart(){
@@ -722,7 +722,7 @@ canvas.addEventListener('touchstart',e=>{
 
 for(let i=1;i<=24;i++)console.log('Fase '+i+': '+getMode(i));
 
-renderStart();
+renderStart();alert('overlay chamado');
 stars=[[],[],[]];planets=[];comets=[];nebulas=[];
 (function il(){if(running)return;requestAnimationFrame(il);ctx.clearRect(0,0,W,H);ctx.globalAlpha=.3;ctx.fillStyle='#fff';for(let i=0;i<3;i++)ctx.fillRect(Math.random()*W,Math.random()*H,1,1);ctx.globalAlpha=1;})();
 });
