@@ -174,8 +174,7 @@ function updateHUD(){
   document.getElementById('lvl').textContent='LVL: '+level;
   document.getElementById('lives').textContent='VIDAS: '+'♥'.repeat(Math.max(0,lives));
   const pw=[];if(player?.doubleTimer>0)pw.push('2X');if(player?.shieldTimer>0)pw.push('SH');
-  document.getElementById('pwr').textContent='PWR: '+(pw.length?pw.join('|'):'-);
-}
+  document.getElementById('pwr').textContent='PWR: '+(pw.length?pw.join('|'):'-');}
 function mkComet(){return{x:-60,y:Math.random()*H*.65,vx:5+Math.random()*3,vy:.8+Math.random()*1.5,delay:Math.floor(Math.random()*200)};}
 function initBG(mode){
   stars=[
