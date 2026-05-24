@@ -127,9 +127,7 @@ const OV=document.getElementById('overlay');
 function showOV(html){OV.style.display='flex';OV.innerHTML=html;}
 function hideOV(){OV.style.display='none';}
 
-function renderStart(){
-  showOV('<h1 style="color:#0ff;text-shadow:0 0 20px #0ff">SPACE INVADERS II</h1><p style="color:#ff0;font-size:10px">1-3 CLASSICO | 5-7 LIVRE | 9-11 LATERAL | BOSS A CADA 4</p><button class="btn" onclick="startGame()">INICIAR</button>');
-  fetchOnlineLB();}
+function renderStart(){showOV("<h1 style='color:#0ff'>SPACE INVADERS II</h1><button class='btn' onclick='startGame()'>INICIAR</button>");}
 
 function drawBG(mode){
   nebulas.forEach(n=>{ctx.globalAlpha=.5;const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r);g.addColorStop(0,n.col);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;});
