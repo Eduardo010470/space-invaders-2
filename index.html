@@ -403,11 +403,11 @@ function gameLoop(){
         for(let i=0;i<20;i++)setTimeout(()=>{
           exps.push({x:boss.x+Math.random()*boss.w,y:boss.y+Math.random()*boss.h,life:30,
             c:['#f00','#ff0','#f0f','#fff'][Math.floor(Math.random()*4)]});sExp();},i*80);
-        powerups.push({x:boss.x+boss.w/2,y:boss.y+boss.h/2,type:Math.random()<.5?'double':'shield',vy:1.5,vx:0});}}
+        powerups.push({x:boss.x+boss.w/2,y:boss.y+boss.h/2,type:Math.random()<.5?'double':'shield',vy:1.5,vx:0});}}}
     if(!player.isSide){
       shields.forEach(sh=>sh.forEach(bl=>{
         if(!bl.alive)return;
-        if(b.x+3>bl.x&&b.x<bl.x+5&&b.y+12>bl.y&&b.y<bl.y+5){bl.alive=false;bullets.splice(bi,1);}})}});
+        if(b.x+3>bl.x&&b.x<bl.x+5&&b.y+12>bl.y&&b.y<bl.y+5){bl.alive=false;bullets.splice(bi,1);}}))}});
   ebullets.forEach((b,bi)=>{
     shields.forEach(sh=>sh.forEach(bl=>{
       if(!bl.alive)return;
