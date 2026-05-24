@@ -125,7 +125,7 @@ function lbHTML(){
 
 // ── OVERLAY ──
 const OV=document.getElementById('overlay');
-function showOV(html){OV.style.display='flex';OV.innerHTML=html;}
+function showOV(html){OV.style.display='flex';OV.innerHTML=html;OV.style.zIndex='9999';OV.style.position='fixed';}
 function hideOV(){OV.style.display='none';}
 
 function renderStart(){
@@ -157,7 +157,7 @@ function lbHTML(){
 
 // ── OVERLAY ──
 const OV=document.getElementById('overlay');
-function showOV(html){OV.style.display='flex';OV.innerHTML=html;}
+function showOV(html){OV.style.display='flex';OV.innerHTML=html;OV.style.zIndex='9999';OV.style.position='fixed';}
 function hideOV(){OV.style.display='none';}
 
 function renderStart(){
