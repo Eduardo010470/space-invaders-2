@@ -130,10 +130,10 @@ function hideOV(){OV.style.display='none';}
 function renderStart(){
   showOV(`<h1 style="color:#0ff;text-shadow:0 0 20px #0ff">SPACE<br>INVADERS II</h1>
 <p style="color:#ff0;font-size:10px;text-align:center">1-3 CLASSICO | 5-7 LIVRE | 9-11 LATERAL | BOSS A CADA 4</p>
-<p style="color:#ff0;font-size:10px">JOGADOR: <span id="nd" style="color:#0ff">${playerName||'---'}</span> <button class="btn" onclick="setName()" style="padding:2px 8px;font-size:10px">✏️</button></p>
+<p style="color:#ff0;font-size:10px">JOGADOR: <span id="nd" style="color:#0ff">${playerName||'---'}</span> <button class="btn" onclick="setName()" style="padding:2px 8px;font-size:10px">&#9999;</button></p>
 ${lbHTML()}
 <button class="btn" onclick="startGame()">INICIAR</button>`);
-  fetchOnlineLB().then(()=>renderStart());}
+  fetchOnlineLB();}
 function setName(){const n=prompt('Seu nome:',playerName||'');if(n){playerName=n.trim().toUpperCase().slice(0,12)||'JOGADOR';localStorage.setItem('si2_name',playerName);const e=document.getElementById('nd');if(e)e.textContent=playerName;}}
 
 function renderEnd(win){
@@ -163,10 +163,10 @@ function hideOV(){OV.style.display='none';}
 function renderStart(){
   showOV(`<h1 style="color:#0ff;text-shadow:0 0 20px #0ff">SPACE<br>INVADERS II</h1>
 <p style="color:#ff0;font-size:10px;text-align:center">1-3 CLASSICO | 5-7 LIVRE | 9-11 LATERAL | BOSS A CADA 4</p>
-<p style="color:#ff0;font-size:10px">JOGADOR: <span id="nd" style="color:#0ff">${playerName||'---'}</span> <button class="btn" onclick="setName()" style="padding:2px 8px;font-size:10px">✏️</button></p>
+<p style="color:#ff0;font-size:10px">JOGADOR: <span id="nd" style="color:#0ff">${playerName||'---'}</span> <button class="btn" onclick="setName()" style="padding:2px 8px;font-size:10px">&#9999;</button></p>
 ${lbHTML()}
 <button class="btn" onclick="startGame()">INICIAR</button>`);
-  fetchOnlineLB().then(()=>renderStart());}
+  fetchOnlineLB();}
 function setName(){const n=prompt('Seu nome:',playerName||'');if(n){playerName=n.trim().toUpperCase().slice(0,12)||'JOGADOR';localStorage.setItem('si2_name',playerName);const e=document.getElementById('nd');if(e)e.textContent=playerName;}}
 
 function renderEnd(win){
