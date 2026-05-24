@@ -54,7 +54,6 @@ canvas{display:block;border:2px solid #0ff;box-shadow:0 0 30px #0ff;background:#
 <button id="fire-btn">🔥</button>
 </div>
 <script>
-document.addEventListener("DOMContentLoaded",function(){
 const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
 const W=480,H=480;
 const HS_KEY='si2_hs',LB_KEY='si2_lb';
@@ -722,10 +721,9 @@ canvas.addEventListener('touchstart',e=>{
 
 for(let i=1;i<=24;i++)console.log('Fase '+i+': '+getMode(i));
 
-renderStart();alert('overlay chamado');
+renderStart();
 stars=[[],[],[]];planets=[];comets=[];nebulas=[];
 (function il(){if(running)return;requestAnimationFrame(il);ctx.clearRect(0,0,W,H);ctx.globalAlpha=.3;ctx.fillStyle='#fff';for(let i=0;i<3;i++)ctx.fillRect(Math.random()*W,Math.random()*H,1,1);ctx.globalAlpha=1;})();
-});
 </script>
 </body>
 </html>
