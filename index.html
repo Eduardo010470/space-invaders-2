@@ -752,14 +752,7 @@ function gameLoop(){
   // Victory
   if(victoryTimer===0){
     var allDead=bossMode?(boss&&!boss.alive):(alive.length===0);
-    if(allDead){
-      if(mode==='side'){
-        // No modo lateral, reinicia a horda sem avançar level
-        makeInvaders('side');
-      } else {
-        victoryTimer=1;recLB(score);sVic();
-      }
-    }
+    if(allDead){victoryTimer=1;recLB(score);sVic();}
   }
   if(victoryTimer>0){
     victoryTimer++;
