@@ -360,10 +360,10 @@ function makeInvaders(mode){
   }else if(mode==='side'){
     var rows=Math.min(5+Math.floor(level/4),7);
     var cols=Math.min(4+Math.floor(level/4),6);
-    var totalH=rows*34;
-    var startY=Math.floor((H-totalH)/2);
+    var totalH=rows*30;
+    var startY=Math.floor((H-totalH)/2)-10;
     for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
-      invaders.push({x:W-40-c*34,y:startY+r*34,w:26,h:20,t:r<1?3:r<3?2:1,f:0,alive:true});
+      invaders.push({x:W-40-c*34,y:startY+r*30,w:26,h:20,t:r<1?3:r<3?2:1,f:0,alive:true});
     }
   }
 }
