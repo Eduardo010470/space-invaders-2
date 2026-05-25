@@ -618,6 +618,7 @@ function gameLoop(){
         var minX=Math.min.apply(null,alive.map(function(i){return i.x;}));
         if(minX<110){
           lives--;
+          updateHUD();
           exps.push({x:player.x+18,y:player.y+18,life:25,c:'#f00'});
           vib([100,50,100]);
           idir*=-1;
