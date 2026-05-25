@@ -617,8 +617,12 @@ function gameLoop(){
         invaders.forEach(function(inv){if(inv.alive)inv.x-=4;});
         var minX=Math.min.apply(null,alive.map(function(i){return i.x;}));
         if(minX<110){
-          var dy=idir*40;idir*=-1;
-          invaders.forEach(function(inv){if(inv.alive){inv.x=W-40;inv.y+=dy;}});
+          lives--;
+          exps.push({x:player.x+18,y:player.y+18,life:25,c:'#f00'});
+          vib([100,50,100]);
+          idir*=-1;
+          invaders.forEach(function(inv){if(inv.alive){inv.x=W-40;}});
+          if(lives<=0){gameOver();return;}
         }
         if(Math.random()<.3){
           var s=alive[Math.floor(Math.random()*alive.length)];
