@@ -319,12 +319,12 @@ function makeForceField(){
 function initBoss(){
   boss={x:W/2-40,y:40,w:80,h:50,hp:6+Math.floor(level/2),maxHp:6+Math.floor(level/2),vx:1.5,ft:0,alive:true};
   bossMode=true;shields=[];invaders=[];
-  for(var s=0;s<3;s++){
-    var sx=60+s*130,sh=[];
-    for(var bx=0;bx<10;bx++)for(var by=0;by<6;by++){
-      if(by===0&&(bx<1||bx>8))continue;
-      if(by>=4&&bx>=3&&bx<=6)continue;
-      sh.push({x:sx+bx*6,y:360+by*6,alive:true});
+  for(var s=0;s<4;s++){
+    var sx=50+s*105,sh=[];
+    for(var bx=0;bx<14;bx++)for(var by=0;by<8;by++){
+      if(by===0&&(bx<2||bx>11))continue;
+      if(by>=5&&bx>=4&&bx<=9)continue;
+      sh.push({x:sx+bx*6,y:380+by*6,alive:true});
     }
     shields.push(sh);
   }
