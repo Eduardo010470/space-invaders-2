@@ -740,9 +740,12 @@ function gameLoop(){
   }else if(mode==='side'){
     var reached=alive.filter(function(i){return i.x+i.w<=65;});
     if(reached.length>0){
-      reached.forEach(function(i){i.alive=false;});
       lives--;sDeath();vib(200);updateHUD();
-      if(lives<=0)gameOver();
+      if(lives<=0){gameOver();return;}
+      // Avanca fase imediatamente
+      running=false;cancelAnimationFrame(animId);level++;
+      renderLV(level,function(){initLevel();running=true;animId=requestAnimationFrame(gameLoop);});
+      return;
     }
   }
 
