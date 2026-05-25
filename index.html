@@ -642,6 +642,19 @@ function gameLoop(){
     }
   }
 
+  // Lateral: verifica limite esquerdo a cada frame
+  if(mode==='side'&&!bossMode&&alive.length>0){
+    var minXcheck=Math.min.apply(null,alive.map(function(i){return i.x;}));
+    if(minXcheck<80){
+      lives--;
+      updateHUD();
+      exps.push({x:player.x+18,y:player.y+18,life:25,c:'#f00'});
+      vib([100,50,100]);
+      invaders.forEach(function(inv){if(inv.alive){inv.x=W-40;}});
+      if(lives<=0){gameOver();}
+    }
+  }
+
   // Boss movement & shooting
   if(bossMode&&boss&&boss.alive){
     boss.x+=boss.vx;
