@@ -616,6 +616,18 @@ function gameLoop(){
       invaders.forEach(function(inv){if(inv.alive)inv.f=inv.f===0?1:0;});
       if(mode==='side'){
         invaders.forEach(function(inv){if(inv.alive)inv.x-=4;});
+        var aliveNow=invaders.filter(function(i){return i.alive;});
+        if(aliveNow.length>0){
+          var minXnow=Math.min.apply(null,aliveNow.map(function(i){return i.x;}));
+          if(minXnow<80){
+            lives--;
+            updateHUD();
+            exps.push({x:player.x+18,y:player.y+18,life:25,c:'#f00'});
+            vib([100,50,100]);
+            invaders.forEach(function(inv){if(inv.alive){inv.x=W-40;}});
+            if(lives<=0){gameOver();return;}
+          }
+        }
         if(Math.random()<.3){
           var s=alive[Math.floor(Math.random()*alive.length)];
           ebullets.push({x:s.x,y:s.y+10,vx:-3,vy:0});
@@ -630,19 +642,6 @@ function gameLoop(){
           ebullets.push({x:s.x+13,y:s.y+20,vx:0,vy:3});
         }
       }
-    }
-  }
-
-  // Lateral: verifica limite esquerdo a cada frame
-  if(mode==='side'&&!bossMode&&alive.length>0){
-    var minXcheck=Math.min.apply(null,alive.map(function(i){return i.x;}));
-    if(minXcheck<80){
-      lives--;
-      updateHUD();
-      exps.push({x:player.x+18,y:player.y+18,life:25,c:'#f00'});
-      vib([100,50,100]);
-      invaders.forEach(function(inv){if(inv.alive){inv.x=W-40;}});
-      if(lives<=0){gameOver();}
     }
   }
 
