@@ -619,7 +619,7 @@ function gameLoop(){
         var aliveNow=invaders.filter(function(i){return i.alive;});
         if(aliveNow.length>0){
           var minXnow=Math.min.apply(null,aliveNow.map(function(i){return i.x;}));
-          if(minXnow<80){
+          if(minXnow<150){
             lives--;
             updateHUD();
             exps.push({x:player.x+18,y:player.y+18,life:25,c:'#f00'});
