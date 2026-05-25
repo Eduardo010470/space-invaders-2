@@ -116,7 +116,18 @@ async function fetchOnlineLB(){
     const r=await fetch(SB_URL+'/rest/v1/si2_scores?select=name,score&order=score.desc&limit=10',{
       headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
     });
-    if(r.ok)onlineLB=await r.json();
+    if(r.ok){
+      onlineLB=await r.json();
+      // Update leaderboard display if overlay is visible
+      var lbEl=document.querySelector('.lb');
+      if(lbEl){
+        var lbs=document.querySelectorAll('.lb');
+        var online='';
+        if(onlineLB.length){onlineLB.forEach(function(r,i){online+='<li><span>#'+(i+1)+' '+r.name+'</span><strong>'+r.score+'</strong></li>';});}
+        else{online='<li><span>Seja o primeiro!</span></li>';}
+        if(lbs[0])lbs[0].querySelector('ol').innerHTML=online;
+      }
+    }
   }catch(e){onlineLB=[];}
 }
 
