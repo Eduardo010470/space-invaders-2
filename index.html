@@ -823,7 +823,29 @@ function gameLoop(){
 
   // Bullets
   ctx.shadowBlur=10;ctx.shadowColor='#0ff';
-  bullets.forEach(function(b){ctx.fillStyle='#0ff';ctx.fillRect(b.x-1,b.y-1,player.isSide?13:4,player.isSide?4:13);});
+  bullets.forEach(function(b){
+    ctx.save();
+    if(player.isSide){
+      // Horizontal laser
+      var grd=ctx.createLinearGradient(b.x,b.y+2,b.x+13,b.y+2);
+      grd.addColorStop(0,'rgba(0,255,255,0)');
+      grd.addColorStop(0.5,'#0ff');
+      grd.addColorStop(1,'rgba(0,255,255,0)');
+      ctx.shadowBlur=6;ctx.shadowColor='#0ff';
+      ctx.fillStyle=grd;
+      ctx.beginPath();ctx.ellipse(b.x+6,b.y+2,7,2,0,0,Math.PI*2);ctx.fill();
+    }else{
+      // Vertical laser
+      var grd=ctx.createLinearGradient(b.x+2,b.y,b.x+2,b.y+13);
+      grd.addColorStop(0,'rgba(0,255,255,0)');
+      grd.addColorStop(0.5,'#0ff');
+      grd.addColorStop(1,'rgba(0,255,255,0)');
+      ctx.shadowBlur=6;ctx.shadowColor='#0ff';
+      ctx.fillStyle=grd;
+      ctx.beginPath();ctx.ellipse(b.x+2,b.y+6,2,7,0,0,Math.PI*2);ctx.fill();
+    }
+    ctx.restore();
+  });
   ctx.shadowColor='#f66';
   ebullets.forEach(function(b){ctx.fillStyle='#f66';ctx.fillRect(b.x,b.y,player.isSide?10:3,player.isSide?3:10);});
   ctx.shadowBlur=0;
