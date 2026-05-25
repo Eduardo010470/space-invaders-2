@@ -114,7 +114,8 @@ async function recLB(pts){
 async function fetchOnlineLB(){
   try{
     const r=await fetch(SB_URL+'/rest/v1/si2_scores?select=name,score&order=score.desc&limit=10',{
-      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}
+      mode:'cors',
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Accept':'application/json'}
     });
     if(r.ok){
       onlineLB=await r.json();
