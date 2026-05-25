@@ -41,6 +41,8 @@ canvas{display:block;border:2px solid #0ff;box-shadow:0 0 30px #0ff;background:#
 <div class="hud" id="lives">VIDAS: ♥♥♥♥♥</div>
 <div class="hud" id="pwr">PWR: -</div>
 </div>
+<div id="exitBtn" onclick="if(running||paused){running=false;paused=false;cancelAnimationFrame(animId);renderStart();}" style="position:absolute;top:8px;right:8px;z-index:100;width:32px;height:32px;background:rgba(0,0,0,0.6);border:1px solid #f00;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#f00;font-size:16px;font-weight:bold;user-select:none;">✕</div>
+<div id="pauseMsg" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:100;color:#ff0;font-size:28px;font-weight:bold;text-shadow:0 0 20px #ff0;letter-spacing:4px;pointer-events:none;">PAUSED</div>
 <canvas id="c" width="480" height="480"></canvas>
 <div id="overlay"></div>
 <div id="mobile-controls">
@@ -62,7 +64,7 @@ const PU_PROB=0.3,PU_DUR=600;
 const VF=90,MB=9,MBD=10,GOD=140;
 
 let onlineLB=[];
-let score=0,lives=5,level=1,running=false,animId=0;
+let score=0,lives=5,level=1,running=false,animId=0,paused=false;
 let player,bullets,invaders,ebullets,shields,ufo,powerups,boss;
 let stars,planets,comets,nebulas;
 let idir=1,itimer=0,idelay=40;
@@ -516,6 +518,11 @@ function drawBoss(){
 
 function gameLoop(){
   if(!running)return;
+  if(paused){
+    document.getElementById('pauseMsg').style.display='block';
+    animId=requestAnimationFrame(gameLoop);return;
+  }
+  document.getElementById('pauseMsg').style.display='none';
   animId=requestAnimationFrame(gameLoop);
   fc++;
   ctx.clearRect(0,0,W,H);
@@ -813,7 +820,7 @@ function gameLoop(){
 }
 
 // Controls
-document.addEventListener('keydown',function(e){keys[e.key]=true;if(e.key===' ')e.preventDefault();});
+document.addEventListener('keydown',function(e){keys[e.key]=true;if(e.key===' ')e.preventDefault();if(e.key==='p'||e.key==='P'){if(running){paused=!paused;}};});
 document.addEventListener('keyup',function(e){keys[e.key]=false;});
 
 function addBtn(el,key){
