@@ -671,6 +671,8 @@ function gameLoop(){
     shields.forEach(function(sh){
       sh.forEach(function(bl){
         if(!bl.alive)return;
+        // No modo lateral, tiros da nave nao destroem o campo de forca (x:58)
+        if(player.isSide&&bl.x===58)return;
         var bw=bl.w||5,bh=bl.h||5;
         if(b.x+3>bl.x&&b.x<bl.x+bw&&b.y+12>bl.y&&b.y<bl.y+bh){bl.alive=false;bullets.splice(bi,1);}
       });
