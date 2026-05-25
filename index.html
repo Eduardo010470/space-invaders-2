@@ -738,7 +738,7 @@ function gameLoop(){
       if(lives<=0)gameOver();
     }
   }else if(mode==='side'){
-    var reached=alive.filter(function(i){return i.x+i.w<=68;});
+    var reached=alive.filter(function(i){return i.x<=100;});
     if(reached.length>0){
       invaders.forEach(function(i){i.alive=false;});
       lives--;sDeath();vib(200);updateHUD();
