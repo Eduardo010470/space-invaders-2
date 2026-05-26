@@ -729,6 +729,9 @@ function gameLoop(){
     return true;
   });
 
+  // Recalcula alive após movimento para pegar posições atualizadas
+  alive=invaders?invaders.filter(function(i){return i.alive;}):[];
+
   // Alien reaches danger zone - perde vida, não game over
   if(mode==='classic'||mode==='free'){
     var reached=alive.filter(function(i){return i.y+i.h>=H-15;});
