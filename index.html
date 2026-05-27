@@ -573,24 +573,18 @@ function gameLoop(){
 
   // Shooting
   fcool++;
-  if((fpress||keys[' '])&&fcool>=MB){
-    fcool=0;sShoot();
+  if((fpress||keys[' '])&&fcool>0&&bullets.length<3){
+    sShoot();
     if(player.isSide){
-      // Lateral: tiro para direita
       if(player.doubleTimer>0){
-        bullets.push({x:player.x+36,y:player.y+4,vx:6,vy:0});
-        bullets.push({x:player.x+36,y:player.y+32,vx:6,vy:0});
-      }else{
-        bullets.push({x:player.x+36,y:player.y+18,vx:6,vy:0});
-      }
+        bullets.push({x:player.x+36,y:player.y+4,vx:12,vy:-1});
+        bullets.push({x:player.x+36,y:player.y+16,vx:12,vy:1});fcool=-8;}
+      else{bullets.push({x:player.x+36,y:player.y+10,vx:12,vy:0});fcool=-14;}
     }else{
-      // Classic/free/boss: tiro para cima
       if(player.doubleTimer>0){
-        bullets.push({x:player.x+2,y:player.y,vx:0,vy:-6});
-        bullets.push({x:player.x+34,y:player.y,vx:0,vy:-6});
-      }else{
-        bullets.push({x:player.x+18,y:player.y,vx:0,vy:-6});
-      }
+        bullets.push({x:player.x+8,y:player.y,vx:0,vy:-10});
+        bullets.push({x:player.x+24,y:player.y,vx:0,vy:-10});fcool=-8;}
+      else{bullets.push({x:player.x+16,y:player.y,vx:0,vy:-10});fcool=-14;}
     }
   }
 
