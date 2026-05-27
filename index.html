@@ -351,7 +351,7 @@ function initBoss(){
 function makeInvaders(mode){
   invaders=[];
   if(mode==='classic'||mode==='free'){
-    var rows=Math.min(3+Math.floor(level/4),6);
+    var rows=Math.min(3+Math.floor(level/4),4);
     var cols=Math.min(10+Math.floor(level/4),14);
     var gap=Math.floor((W-20)/cols);
     for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
