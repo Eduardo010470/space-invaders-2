@@ -72,7 +72,7 @@ let player,bullets,invaders,ebullets,shields,ufo,powerups,boss;
 let stars,planets,comets,nebulas;
 let idir=1,itimer=0,idelay=40;
 let keys={},fpress=false,fcool=0,exps=[],fc=0,utimer=0;
-let victoryTimer=0,bossMode=false;
+let victoryTimer=0,bossMode=false,bossCount=0;
 let marchStep=0,marchClock=0;
 let ac,master,ufoOsc,ufoGain;
 let highScore=+localStorage.getItem(HS_KEY)||0;
@@ -384,7 +384,7 @@ function makeInvaders(mode){
 
 function initLevel(){
   var mode=getMode(level);
-  bossMode=false;boss=null;
+  bossMode=false;boss=null;bossCount=0;
   bullets=[];ebullets=[];shields=[];powerups=[];exps=[];
   ufo=null;utimer=0;idir=1;itimer=0;fc=0;
   victoryTimer=0;marchStep=0;marchClock=0;fcool=0;
@@ -681,6 +681,8 @@ function gameLoop(){
       if(Math.random()<.2)powerups.push({x:boss.x+Math.random()*boss.w,y:boss.y+boss.h,type:'shield',vy:1.5,vx:0});
       if(boss.hp<=0){
         boss.alive=false;addScore(500+level*50);sExp();vib([100,50,100,50,200]);
+        bossCount++;
+        if(bossCount%2===0&&lives<5){lives++;updateHUD();tone('square',880,0.15,0.3,1320);}
         if(Math.floor(level/4)%2===0){lives=Math.min(lives+1,9);updateHUD();}
         for(var i=0;i<20;i++){
           (function(ii){setTimeout(function(){
