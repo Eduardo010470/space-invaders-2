@@ -64,7 +64,7 @@ const NAME_KEY='si2_playername';
 let playerName=localStorage.getItem(NAME_KEY)||'';
 const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtxa3h1bHN1ZXZmdWhtdXZoeHNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NjYxMTYsImV4cCI6MjA5MTM0MjExNn0.dwPtvv9lvu_urSgno57Iu4POAKP2qANbSw5fKEcscdE';
 const PU_PROB=0.3,PU_DUR=600;
-const VF=90,MB=15,MBD=10,GOD=140;
+const VF=90,MB=5,MBD=10,GOD=140;
 
 let onlineLB=[];
 let score=0,lives=5,level=1,running=false,animId=0,paused=false;
@@ -586,10 +586,10 @@ function gameLoop(){
     }else{
       // Classic/free/boss: tiro para cima
       if(player.doubleTimer>0){
-        bullets.push({x:player.x+2,y:player.y,vx:0,vy:-3});
-        bullets.push({x:player.x+34,y:player.y,vx:0,vy:-3});
+        bullets.push({x:player.x+2,y:player.y,vx:0,vy:-6});
+        bullets.push({x:player.x+34,y:player.y,vx:0,vy:-6});
       }else{
-        bullets.push({x:player.x+18,y:player.y,vx:0,vy:-3});
+        bullets.push({x:player.x+18,y:player.y,vx:0,vy:-6});
       }
     }
   }
@@ -817,7 +817,7 @@ function gameLoop(){
 
   // Bullets
   ctx.shadowBlur=10;ctx.shadowColor='#0ff';
-  bullets.forEach(function(b){ctx.fillStyle='#0ff';ctx.shadowBlur=6;ctx.shadowColor='#0ff';ctx.fillRect(b.x,b.y,player.isSide?10:3,player.isSide?3:10);});
+  bullets.forEach(function(b){ctx.fillStyle='#0ff';ctx.shadowBlur=4;ctx.shadowColor='#0ff';ctx.fillRect(b.x,b.y,player.isSide?8:2,player.isSide?2:8);});
   ctx.shadowColor='#f66';
   ebullets.forEach(function(b){ctx.fillStyle='#f66';ctx.fillRect(b.x,b.y,player.isSide?10:3,player.isSide?3:10);});
   ctx.shadowBlur=0;
