@@ -811,7 +811,7 @@ function gameLoop(){
 
   // Bullets
   ctx.shadowBlur=10;ctx.shadowColor='#0ff';
-  bullets.forEach(function(b){if(player.isSide){ctx.shadowBlur=12;ctx.shadowColor='#0ff';ctx.fillStyle='#0ff';ctx.fillRect(b.x,b.y,20,8);ctx.globalAlpha=.8;ctx.fillStyle='#fff';ctx.fillRect(b.x+2,b.y+2,16,4);ctx.globalAlpha=1;ctx.shadowBlur=0;}else{ctx.fillStyle='#0f0';ctx.fillRect(b.x,b.y,5,5);}});
+  bullets.forEach(function(b){if(player.isSide){ctx.fillStyle='#0ff';ctx.fillRect(b.x,b.y,8,3);}else{ctx.fillStyle='#0f0';ctx.fillRect(b.x,b.y,5,5);}});
   ctx.shadowColor='#f66';
   ebullets.forEach(function(b){ctx.fillStyle='#f66';ctx.fillRect(b.x,b.y,player.isSide?10:3,player.isSide?3:10);});
   ctx.shadowBlur=0;
