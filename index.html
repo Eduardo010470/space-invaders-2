@@ -626,7 +626,7 @@ function gameLoop(){
         invaders.forEach(function(inv){if(inv.alive)inv.x+=idir*10;});
         var maxX=Math.max.apply(null,alive.map(function(i){return i.x+i.w;}));
         var minX=Math.min.apply(null,alive.map(function(i){return i.x;}));
-        if(maxX>W-10||minX<10){idir*=-1;invaders.forEach(function(inv){if(inv.alive)inv.y+=14;});idelay=Math.max(12,idelay-1);}
+        if(maxX>W-10||minX<10){idir*=-1;invaders.forEach(function(inv){if(inv.alive)inv.y+=14;});}
         if(Math.random()<.3){
           var s=alive[Math.floor(Math.random()*alive.length)];
           ebullets.push({x:s.x+13,y:s.y+20,vx:0,vy:3});
