@@ -96,7 +96,8 @@ function saveLB(){localStorage.setItem(LB_KEY,JSON.stringify(leaderboard));}
 
 async function recLB(pts){
   const date=new Date().toLocaleDateString('pt-BR');
-  leaderboard.push({score:pts,date});
+  const name=playerName||'JOGADOR';
+  leaderboard.push({score:pts,date,name});
   leaderboard.sort(function(a,b){return b.score-a.score;});
   leaderboard=leaderboard.slice(0,10);
   saveLB();
