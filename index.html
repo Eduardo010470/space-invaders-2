@@ -134,7 +134,7 @@ async function fetchOnlineLB(){
 
 function lbHTML(){
   var local='';
-  if(leaderboard.length){leaderboard.forEach(function(r,i){local+='<li><span>#'+(i+1)+' '+(r.date||'')+'</span><strong>'+r.score+'</strong></li>';});}
+  if(leaderboard.length){leaderboard.forEach(function(r,i){local+='<li><span>#'+(i+1)+' '+(r.name||r.date||'')+'</span><strong>'+r.score+'</strong></li>';});}
   else{local='<li><span>Sem recordes</span></li>';}
   var online='';
   if(onlineLB.length){onlineLB.forEach(function(r,i){online+='<li><span>#'+(i+1)+' '+r.name+'</span><strong>'+r.score+'</strong></li>';});}
