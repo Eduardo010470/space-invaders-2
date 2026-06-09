@@ -592,6 +592,9 @@ FB.addEventListener('mouseup',()=>fpress=false);
 let tapC=0,tapT=0;
 canvas.addEventListener('touchstart',e=>{
   if(!running)return;
+  tapC++;clearTimeout(tapT);tapT=setTimeout(()=>tapC=0,800);
+  if(tapC>=3){tapC=0;level++;running=false;cancelAnimationFrame(animId);
+    renderLV(level,()=>{initLevel();running=true;animId=requestAnimationFrame(gameLoop);}});}
 },{passive:true});
 renderStart();
 stars=[[],[],[]];planets=[];comets=[];nebulas=[];
