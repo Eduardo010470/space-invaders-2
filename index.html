@@ -592,7 +592,10 @@ FB.addEventListener('mouseup',()=>fpress=false);
 let tapC=0,tapT=0;
 canvas.addEventListener('touchstart',e=>{
   if(!running)return;
-  },{passive:true});
+  tapC++;clearTimeout(tapT);tapT=setTimeout(()=>tapC=0,800);
+  if(tapC>=3){tapC=0;level++;running=false;cancelAnimationFrame(animId);
+    renderLV(level,()=>{initLevel();running=true;animId=requestAnimationFrame(gameLoop);}});}
+},{passive:true});
 renderStart();
 stars=[[],[],[]];planets=[];comets=[];nebulas=[];
 (function il(){if(running)return;requestAnimationFrame(il);ctx.clearRect(0,0,W,H);ctx.globalAlpha=.3;ctx.fillStyle='#fff';for(let i=0;i<3;i++)ctx.fillRect(Math.random()*W,Math.random()*H,1,1);ctx.globalAlpha=1;})();
