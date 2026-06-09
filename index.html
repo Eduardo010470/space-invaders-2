@@ -875,14 +875,8 @@ FB.addEventListener('touchend',function(e){e.preventDefault();fpress=false;},{pa
 FB.addEventListener('mousedown',function(){initAudio();fpress=true;});
 FB.addEventListener('mouseup',function(){fpress=false;});
 
-var tapC=0,tapT=0;
 canvas.addEventListener('touchstart',function(e){
   if(!running)return;
-  tapC++;clearTimeout(tapT);tapT=setTimeout(function(){tapC=0;},800);
-  if(tapC>=3){
-    tapC=0;level++;running=false;cancelAnimationFrame(animId);
-    renderLV(level,function(){initLevel();running=true;animId=requestAnimationFrame(gameLoop);});
-  }
 },{passive:true});
 
 renderStart();
