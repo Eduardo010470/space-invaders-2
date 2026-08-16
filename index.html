@@ -106,7 +106,7 @@ async function recLB(pts){
       await fetch(SB_URL+'/rest/v1/si2_scores',{
         method:'POST',
         headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'},
-        body:JSON.stringify({name:playerName||'Player',score:pts})
+        body:JSON.stringify({name:playerName||'JOGADOR',score:pts})
       });
     }catch(e){}
   }
@@ -154,7 +154,7 @@ function renderStart(){
   h+='<input id="nameInput" type="text" maxlength="12" placeholder="Seu nome" value="'+playerName+'" style="background:#001;border:1px solid #0ff;color:#0ff;padding:6px 10px;border-radius:6px;font-size:13px;width:130px;text-align:center">';
   h+='</div>';
   h+=lbHTML();
-  h+='<button class="btn" onclick="var n=document.getElementById(\'nameInput\').value.trim();if(n){playerName=n;localStorage.setItem(NAME_KEY,n);}startGame()">INICIAR</button>';
+  h+='<button class="btn" onclick="var n=document.getElementById(\'nameInput\').value.trim();if(!n){alert('Digite seu nome para entrar no ranking');return;}playerName=n;localStorage.setItem(NAME_KEY,n);startGame()">INICIAR</button>';
   showOV(h);fetchOnlineLB();
 }
 
