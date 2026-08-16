@@ -890,5 +890,15 @@ stars=[[],[],[]];planets=[];comets=[];nebulas=[];
   ctx.globalAlpha=1;
 })();
 </script>
+<script>
+// no navegador a barra do Chrome empurra o conteudo; no app a WebView comeca
+// em y=0 e os botoes ficam atras da barra de status do Android
+if(window.ReactNativeWebView){
+  ['pauseBtn','exitBtn'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.style.top='34px';
+  });
+}
+</script>
 </body>
 </html>
